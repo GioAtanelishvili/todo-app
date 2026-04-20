@@ -15,6 +15,7 @@ export default function TodoList() {
     const storedTodos = localStorage.getItem("todos")
 
     if (storedTodos) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTodos(JSON.parse(storedTodos) as TodoT[])
     }
   }, [])
