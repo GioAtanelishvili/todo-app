@@ -37,17 +37,19 @@ export default function TodoList() {
       ]
     }
 
+    localStorage.setItem("todos", JSON.stringify(newTodos))
+
     setTodos(newTodos)
     setIsModalOpen(false)
     setEditingTodoId(null)
-
-    localStorage.setItem("todos", JSON.stringify(newTodos))
   }
 
   const handleToggleTodo = (id: number, completed: boolean) => {
-    setTodos((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, completed } : todo))
+    const newTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed } : todo
     )
+    localStorage.setItem("todos", JSON.stringify(newTodos))
+    setTodos(newTodos)
   }
 
   const handleDeleteTodo = (id: number) => {
